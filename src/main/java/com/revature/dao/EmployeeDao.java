@@ -1,5 +1,7 @@
 package com.revature.dao;
 
+import static org.mockito.ArgumentMatchers.anyList;
+
 import java.util.List;
 
 import org.hibernate.Session;
@@ -22,9 +24,17 @@ public class EmployeeDao {
 		return pk;
 	}
 	
-//	public List<Employee> findAll(){
-//		
-//	}
+	public List<Employee> findAll(){
+		
+		Session ses = HibernateUtil.getSession();
+		List<Employee> emps = ses.createQuery("from Employee", Employee.class).list();
+		
+		return emps;
+		
+		
+		
+		
+	}
 	
 	public boolean delete() {
 		return false;
